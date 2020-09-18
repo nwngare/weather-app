@@ -3,7 +3,11 @@
   "version": "1.0.0",
   "description": "Simple web application displaying the current weather for a user's current location or their location of choice",
   "main": "app.js",
+  "private": true,
   "scripts": {
+    "start": "node ./bin/www",
+    "devstart": "nodemon ./bin/www",
+    "serverstart": "SET DEBUG=weather-app:* | npm run devstart",
     "test": "echo \"Error: no test specified\" && exit 1"
   },
   "repository": {
@@ -20,6 +24,13 @@
   },
   "homepage": "https://github.com/nwngare/weather-app#readme",
   "dependencies": {
-    "express": "^4.17.1"
+    "axios": "^0.20.0",
+    "cookie-parser": "~1.4.4",
+    "debug": "~2.6.9",
+    "express": "~4.16.1",
+    "morgan": "~1.9.1"
+  },
+  "devDependencies": {
+    "nodemon": "^2.0.4"
   }
 }
