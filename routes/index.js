@@ -1,9 +1,11 @@
 var express = require('express');
 var router = express.Router();
+var axios = require('axios');
 
-/* GET home page. */
-router.get('/', function (req, res) {
-    res.redirect('/home');
-});
+// Require controller modules
+var controller = require('../controllers/controller');
+
+/* GET weather. */
+router.get('/', controller.index);
 
 module.exports = router;

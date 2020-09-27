@@ -5,7 +5,7 @@ var axios = require('axios');
 // Require controller modules
 var controller = require('../controllers/controller');
 
-/* GET users listing. */
+/* GET weather. */
 router.get('/', controller.index);
 
 module.exports = router;
