@@ -6,7 +6,6 @@ var logger = require('morgan');
 require('dotenv').config();
 
 var indexRouter = require('./routes/index');
-//var homeRouter = require('./routes/home');  //Import routes for "home" area of site
 
 var app = express();
 
@@ -21,7 +20,6 @@ app.use(cookieParser());
 //app.use(express.static(path.join(__dirname, 'public'))); //This line is serving the static index.html file in ./public/
 
 app.use('/', indexRouter);
-//app.use('/home', homeRouter);  // Add home routes to middleware chain.
 
 // catch 404 and forward to error handler
 app.use(function(req, res, next) {

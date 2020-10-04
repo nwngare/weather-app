@@ -6,6 +6,6 @@ var axios = require('axios');
 var controller = require('../controllers/controller');
 
 /* GET weather. */
-router.get('/', controller.index);
-
+router.get('/', controller.geo_location_weather_get);
+router.post('/', controller.user_input_location_weather_post);
 module.exports = router;
