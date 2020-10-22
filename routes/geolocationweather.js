@@ -4,7 +4,6 @@ var router = express.Router();
 // Require controller modules
 var controller = require('../controllers/controller');
 
-/* GET weather. */
-router.get('/', controller.geo_location_weather_get);
-router.post('/', controller.user_input_location_weather_post);
+/* GET weather for users location. */
+router.post('/', controller.geo_location_weather_post);
 module.exports = router;

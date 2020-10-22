@@ -1,12 +1,15 @@
 extends layout
 
 block content
-  h1= title
-  p Welcome to #{title}
-  
-  h2 Description
-  p= description
+  div(class='row')
+    div(class='col')
+      h1= name
+      p Welcome to #{name}
+    div(class='col-6')
+      h2 Description
+      p= description
 
-  h2 Temperature
-  p Low: #{lowTemp}
-  p High: #{highTemp}
+      h2 Temperature
+      p Current Temperature: #{temp}
+      p Low: #{lowTemp}
+      p High: #{highTemp}
