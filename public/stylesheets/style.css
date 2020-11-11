@@ -1,8 +1,18 @@
+html, body {
+  min-height: 100%;
+  width: 100%;
+}
+
 body {
-  padding: 50px;
   font: 14px "Lucida Grande", Helvetica, Arial, sans-serif;
+  background-image: linear-gradient(#007399, #00cc99);
+  background-attachment: fixed;
 }
 
 a {
   color: #00B7FF;
+}
+
+footer {
+  color: white;
 }

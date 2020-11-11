@@ -3,13 +3,25 @@ extends layout
 block content
   div(class='row')
     div(class='col')
-      h1= name
-      p Welcome to #{name}
-    div(class='col-6')
-      h2 Description
-      p= description
-
-      h2 Temperature
-      p Current Temperature: #{temp}
-      p Low: #{lowTemp}
-      p High: #{highTemp}
+      div(class='card')
+        div(id='current-weather', class='card-body')
+          h1(class='card-title') #{name} Weather
+            p(class='card-text') #{description}
+            p Current Temperature: #{temp0}
+            p Low: #{lowTemp0}
+            p High: #{highTemp0}
+  div(class='row')
+    div(class='col')
+      ul(id='five-day-forecast', class='list-group')
+        li(class='list-group-item flex-fill') Day 1
+          p Temperature: #{temp1}
+          p Low: #{lowTemp1} / High: #{highTemp1}
+        li(class='list-group-item flex-fill') Day 2
+          p Temperature: #{temp2}
+          p Low: #{lowTemp2} / High: #{highTemp2}
+        li(class='list-group-item flex-fill') Day 3
+          p Temperature: #{temp3}
+          p Low: #{lowTemp3} / High: #{highTemp3}
+        li(class='list-group-item flex-fill') Day 4
+          p Temperature: #{temp4}
+          p Low: #{lowTemp4} / High: #{highTemp4}
