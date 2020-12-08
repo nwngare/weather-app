@@ -5,6 +5,6 @@ var router = express.Router();
 var controller = require('../controllers/controller');
 
 /* GET weather. */
-router.get('/', controller.geo_location_weather_get);
-router.post('/', controller.user_input_location_weather_post);
+router.get('/', controller.home_page_weather_get);
+router.post('/', controller.geo_location_weather_post);
 module.exports = router;

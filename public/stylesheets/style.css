@@ -1,18 +1,31 @@
 html, body {
-  min-height: 100%;
+  height: 100%;
   width: 100%;
 }
 
 body {
   font: 14px "Lucida Grande", Helvetica, Arial, sans-serif;
-  background-image: linear-gradient(#007399, #00cc99);
+  color: white;
+  background-image: linear-gradient(#113076 9%,#157fba);
   background-attachment: fixed;
+}
+
+main {
+  min-height: 100vh;
 }
 
 a {
   color: #00B7FF;
 }
 
-footer {
-  color: white;
+p {
+  font-size: 1.2rem;
+}
+
+.transparent-card {
+  background-color: rgba(245,245,245, 0.3);
+}
+
+#temperature {
+  font-size: 3.5rem;
 }

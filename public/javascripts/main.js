@@ -14,10 +14,9 @@ window.onload = function () {
                     },
                     body: JSON.stringify(data)
                 }
-                fetch('/geolocationweather', options)
+                fetch('/', options)
                     .then(response => response.json())
                     .then(data => {
-                        //console.log('Success:', data);
                         renderWeather(data);
                     })
                     .catch((error) => {
@@ -30,24 +29,32 @@ window.onload = function () {
     }
 
     function renderWeather(data) {
-        // Replacing the current weather with the user's geolocation current weather
-        var currentWeather = '';
-        currentWeather += '<h1 class="card-title">' + data.city.name +' Weather';
-        currentWeather += '<p class="card-text">' + data.list[0].weather[0].description + '</p>';
-        currentWeather += '<p>Current Temperature: ' + data.list[0].main.temp + '</p>';
-        currentWeather += '<p>Low: ' + data.list[0].main.temp_min + '</p>';
-        currentWeather += '<p>High: ' + data.list[0].main.temp_max + '</p></h1>';
-        document.getElementById('current-weather').innerHTML = currentWeather;
+        // Change city name
+        document.querySelector('h1').textContent = 'Current Weather in ' + data.name;
 
-        // Replacing the rest of the five day forecast with the user's geolocation five day forecast
-        var fiveDayForecast = '';
-        for (var i = 1; i < data.list.length; i++) {
-            fiveDayForecast += '<li class="list-group-item flex-fill">Day ' + i;
-            fiveDayForecast += '<p>Temperature: ' + data.list[i].main.temp + '</p>';
-            fiveDayForecast += '<p>Low: ' + data.list[i].main.temp_min + ' / ' + 'High: ' + data.list[i].main.temp_max + '</p>';
-            fiveDayForecast += '</li>';
-        }
-        document.getElementById('five-day-forecast').innerHTML = fiveDayForecast;
+        // Modify weather icon
+        document.querySelector('img').setAttribute('src', `http://openweathermap.org/img/wn/${data.weather[0].icon}@2x.png`);
+
+        // Modify weather data
+        const weatherData = document.querySelectorAll('p')
+        weatherData[1].textContent = Math.round(data.main.temp) + '\u00B0';
+        weatherData[2].textContent = ' Humidity: ' + data.main.humidity + '%';
+        weatherData[2].insertAdjacentHTML('afterbegin','<i class="fab fa-cloudscale"></i>');
+        weatherData[3].textContent = ' Wind Speed: ' + data.wind.speed + ' mph';
+        weatherData[3].insertAdjacentHTML('afterbegin','<i class="fas fa-wind"></i>');
+        weatherData[4].textContent = ' Cloudiness: ' + data.clouds.all + '%';
+        weatherData[4].insertAdjacentHTML('afterbegin','<i class="fas fa-cloud"></i>');
+        weatherData[5].textContent = ' Sunrise: ' + convertEpochTime(data.sys.sunrise);
+        weatherData[5].insertAdjacentHTML('afterbegin','<i class="fas fa-sun"></i>');
+        weatherData[6].textContent = ' Sunset: ' + convertEpochTime(data.sys.sunset);
+        weatherData[6].insertAdjacentHTML('afterbegin','<i class="fas fa-moon"></i>');
+    }
+
+    function convertEpochTime(timestamp) {
+        var convertedTimestamp = new Date(timestamp * 1000);
+        var hour = convertedTimestamp.getHours();
+        var minute = convertedTimestamp.getMinutes();
+        return hour + ":" + minute;
     }
 
     document.getElementById('get-location').addEventListener('click', geoFindMe);

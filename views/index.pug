@@ -3,25 +3,26 @@ extends layout
 block content
   div(class='row')
     div(class='col')
-      div(class='card')
-        div(id='current-weather', class='card-body')
-          h1(class='card-title') #{name} Weather
-            p(class='card-text') #{description}
-            p Current Temperature: #{temp0}
-            p Low: #{lowTemp0}
-            p High: #{highTemp0}
-  div(class='row')
-    div(class='col')
-      ul(id='five-day-forecast', class='list-group')
-        li(class='list-group-item flex-fill') Day 1
-          p Temperature: #{temp1}
-          p Low: #{lowTemp1} / High: #{highTemp1}
-        li(class='list-group-item flex-fill') Day 2
-          p Temperature: #{temp2}
-          p Low: #{lowTemp2} / High: #{highTemp2}
-        li(class='list-group-item flex-fill') Day 3
-          p Temperature: #{temp3}
-          p Low: #{lowTemp3} / High: #{highTemp3}
-        li(class='list-group-item flex-fill') Day 4
-          p Temperature: #{temp4}
-          p Low: #{lowTemp4} / High: #{highTemp4}
+      section(id='current-weather')
+      div(class='card-deck mt-4')
+        div(class='card transparent-card')
+          div(class='card-body')
+            div(class='row')
+              div(class='col')
+                h1(class='card-title') Current Weather in #{name}
+            div(class='row')
+              div(class='col-6')
+                p(class='card-text') Date
+                p(id='temperature', class='card-text') #{temp}&deg;
+              div(class='col-6')
+                img(src=`http://openweathermap.org/img/wn/${icon}@2x.png`, class='weather-icon')
+      div(class='card-deck mt-4')
+        div(class='card transparent-card')
+          div(class='card-body')
+            div(class='row')
+              div(class='col')
+                p(class='card-text') #[i(class='fab fa-cloudscale')] Humidity: #{humidity}%
+                p(class='card-text') #[i(class='fas fa-wind')] Wind Speed: #{windSpeed} mph
+                p(class='card-text') #[i(class='fas fa-cloud')] Cloudiness: #{cloudiness}%
+                p(class='card-text') #[i(class='fas fa-sun')] Sunrise: #{sunrise}
+                p(class='card-text') #[i(class='fas fa-moon')] Sunset: #{sunset}
